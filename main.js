@@ -5,7 +5,7 @@ function main() {
     zoom: 14
   });
 
-  L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
+  L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
     subdomains: 'abcd',
     maxZoom: 19
@@ -26,8 +26,6 @@ function main() {
   }).bindPopup(popup).addTo(map);
   
 }
-
-
 
 window.onload = main;
 // L.tileLayer('HTTP://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png', { attribution: 'Stamen'})
