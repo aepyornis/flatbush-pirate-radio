@@ -1,8 +1,8 @@
 function main() {
   var map = L.map('map', { 
     zoomControl: false,
-    center : [40.65, -73.925],
-    zoom: 14
+    center : [40.64, -73.955],
+    zoom: 13
   });
 
   L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png', {
@@ -11,20 +11,19 @@ function main() {
     maxZoom: 19
   }).addTo(map);
   
-  var popupContent = '<iframe width="100%" height="300" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/206779438&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>';
-  
-  var popup = L.popup({
-    minWidth: 300
-  }).setContent(popupContent);
+  soundz.forEach(function(s){
+    var popup = L.popup({
+      minWidth: 500
+    }).setContent(s.popup);
 
-  L.circleMarker([40.648119, -73.952376], {
-    opacity: 1,
-    color: '#ece7f2',
-    fillColor: '#2b8cbe',
-    fillOpacity: 1,
-    radius: 10
-  }).bindPopup(popup).addTo(map);
-  
+    L.circleMarker(s.geo, {
+      opacity: 1,
+      color: '#ece7f2',
+      fillColor: '#2b8cbe',
+      fillOpacity: 1,
+      radius: 10
+    }).bindPopup(popup).addTo(map);
+  });
 }
 
 window.onload = main;
